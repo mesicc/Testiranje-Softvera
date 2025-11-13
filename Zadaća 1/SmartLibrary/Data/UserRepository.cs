@@ -1,41 +1,42 @@
+using SmartLibrary.Models;
 using System.Collections.Generic;
 using System.Linq;
-using SmartLibrary.Models;
 
 namespace SmartLibrary.Data
 {
     public class UserRepository
     {
-        private List<User> _users = new List<User>();
+        private List<User> _korisnici = new();
         private int _nextId = 1;
 
-        public List<User> GetAll() => _users;
+        public IEnumerable<User> GetAll() => _korisnici;
 
-        public User GetById(int id) => _users.FirstOrDefault(u => u.Id == id);
+        public User? GetById(int id) => _korisnici.FirstOrDefault(u => u.Id == id);
 
-        public void Add(User user)
+        public void Add(User korisnik)
         {
-            user.Id = _nextId++;
-            _users.Add(user);
+            korisnik.Id = _nextId++;
+            _korisnici.Add(korisnik);
         }
 
-        public bool Update(User user)
-        {
-            var existing = GetById(user.Id);
-            if (existing == null) return false;
-
-            existing.Ime = user.Ime;
-            existing.Prezime = user.Prezime;
-            existing.Email = user.Email;
-            existing.Uloga = user.Uloga;
-            return true;
-        }
-
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
             var user = GetById(id);
             if (user == null) return false;
-            _users.Remove(user);
+            _korisnici.Remove(user);
+            return true;
+        }
+
+        public bool Update(User updatedUser)
+        {
+            var existing = GetById(updatedUser.Id);
+            if (existing == null) return false;
+
+            existing.Ime = updatedUser.Ime;
+            existing.Prezime = updatedUser.Prezime;
+            existing.Email = updatedUser.Email;
+            existing.Lozinka = updatedUser.Lozinka;
+            existing.Uloga = updatedUser.Uloga;
             return true;
         }
     }

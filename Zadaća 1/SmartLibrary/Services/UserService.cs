@@ -1,6 +1,6 @@
-using System;
-using SmartLibrary.Models;
 using SmartLibrary.Data;
+using SmartLibrary.Models;
+using System;
 
 namespace SmartLibrary.Services
 {
@@ -13,85 +13,37 @@ namespace SmartLibrary.Services
             _repo = repo;
         }
 
-        public void RegistrujKorisnika()
+        public void RegistrujKorisnika(string ime, string prezime, string email, string lozinka, UserRole uloga)
         {
-            Console.Write("Unesite ime: ");
-            string ime = Console.ReadLine();
-
-            Console.Write("Unesite prezime: ");
-            string prezime = Console.ReadLine();
-
-            Console.Write("Unesite email: ");
-            string email = Console.ReadLine();
-
-            if (!email.Contains("@"))
-            {
-                Console.WriteLine("❌ Email mora sadržavati '@'.");
-                return;
-            }
-
-            Console.Write("Odaberite ulogu (1 - Administrator, 2 - Član): ");
-            int izbor = int.Parse(Console.ReadLine());
-            var uloga = izbor == 1 ? UserRole.Administrator : UserRole.Clan;
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
+                throw new ArgumentException("Email nije validan!");
+            if (string.IsNullOrWhiteSpace(lozinka) || lozinka.Length < 5)
+                throw new ArgumentException("Lozinka mora imati barem 5 karaktera!");
 
             var user = new User
             {
                 Ime = ime,
                 Prezime = prezime,
                 Email = email,
+                Lozinka = lozinka,
                 Uloga = uloga
             };
 
             _repo.Add(user);
-            Console.WriteLine("✅ Korisnik uspješno registrovan!");
         }
 
-        public void AzurirajKorisnika()
+        public void AzurirajKorisnika(User korisnik) => _repo.Update(korisnik);
+
+        public void ObrisiKorisnika(int id)
         {
-            Console.Write("Unesite ID korisnika za ažuriranje: ");
-            int id = int.Parse(Console.ReadLine());
-            var user = _repo.GetById(id);
-            if (user == null)
-            {
-                Console.WriteLine("❌ Korisnik nije pronađen!");
-                return;
-            }
-
-            Console.Write("Novo ime: ");
-            user.Ime = Console.ReadLine();
-
-            Console.Write("Novo prezime: ");
-            user.Prezime = Console.ReadLine();
-
-            Console.Write("Novi email: ");
-            user.Email = Console.ReadLine();
-
-            _repo.Update(user);
-            Console.WriteLine("✅ Korisnik ažuriran!");
-        }
-
-        public void ObrisiKorisnika()
-        {
-            Console.Write("Unesite ID korisnika za brisanje: ");
-            int id = int.Parse(Console.ReadLine());
-            if (_repo.Delete(id))
-                Console.WriteLine("✅ Korisnik obrisan!");
-            else
-                Console.WriteLine("❌ Korisnik nije pronađen!");
+            if (!_repo.Remove(id))
+                throw new Exception("Korisnik nije pronađen!");
         }
 
         public void PrikaziSve()
         {
-            var users = _repo.GetAll();
-            if (users.Count == 0)
-            {
-                Console.WriteLine("Nema registrovanih korisnika.");
-                return;
-            }
-
-            Console.WriteLine("\n📋 Spisak korisnika:");
-            foreach (var u in users)
-                Console.WriteLine(u);
+            foreach (var k in _repo.GetAll())
+                Console.WriteLine(k);
         }
     }
 }
