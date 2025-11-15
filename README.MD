@@ -40,8 +40,8 @@ Razviti i testirati softverske komponente koristeći:
 
 | GitHub Profil | Ime i Prezime | Index |
 |---------------|---------------|-------|
-| MuxBH28 | Muhammed Šehić |  |
-| Lambda-44 | Kerim Gazić |  |
+| MuxBH28 | Muhammed Šehić | 227-ST |
+| Lambda-44 | Kerim Gazić | 226-ST |
 | mesicc | Kemal Mešić | 236-ST |
 
 
