@@ -12,6 +12,7 @@ Ovdje se nalaze sve **zadaće, projekti i materijali** koji pokrivaju teorijski 
 | Zadaća | Tema | Kratak opis |
 |--------|------|--------------|
 | 🧩 Zadaća 1 | Inspekcija i testiranje koda | Razvoj i pregled C# konzolne aplikacije – sistem za upravljanje pametnom bibliotekom |
+ 🧩 Zadaća 2 | Funkcionalnosti i testiranje koda | Razvoj i pregled C# konzolne aplikacije – sistem za upravljanje pametnom bibliotekom - Proširena verzija Zadaće 1 |
 | 📑 Dodatno | Dokumentacija i check-liste | Kontrolne liste, izvještaji o greškama i dijagrami |
 
 ---
