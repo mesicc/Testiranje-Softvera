@@ -14,12 +14,32 @@ class Program
         var borrowRepo = new BorrowRepository();
         var borrowService = new BorrowService(borrowRepo, inventory, userRepo);
 
+        // Repozitoriji za preporuke  
+        var bookRepo = new BookRepository();
+        var historyRepo = new BorrowHistoryRepository();
+        var recService = new RecommendationService(bookRepo, historyRepo);
+
+        // --- Dodavanje knjiga u BookRepo ---
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(1, "Na Drini ćuprija", "Ivo Andrić", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(2, "Travnička hronika", "Ivo Andrić", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(3, "Prokleta avlija", "Ivo Andrić", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(4, "Derviš i smrt", "Meša Selimović", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(5, "Tvrđava", "Meša Selimović", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(6, "Bašta, pepeo", "Danilo Kiš", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(7, "Rani jadi", "Danilo Kiš", "Roman"));
+        bookRepo.AddBook(new SmartLibrary.Inventory.Book(8, "Hazarski rječnik", "Milorad Pavić", "Eksperimentalni roman"));
+
+        // Historija korisnika  
+        historyRepo.AddRecord(new BorrowHistory(1, 1));
+        historyRepo.AddRecord(new BorrowHistory(1, 3));
+
         while (true)
         {
             Console.WriteLine("\n=== SMART LIBRARY SISTEM ===");
             Console.WriteLine("1. Upravljanje korisnicima");
             Console.WriteLine("2. Inventar knjiga");
             Console.WriteLine("3. Sistem posudbe");
+            Console.WriteLine("4. Preporuke za korisnika");
             Console.WriteLine("0. Izlaz");
             Console.Write("Izbor: ");
 
@@ -40,6 +60,16 @@ class Program
                     BorrowMenu(borrowService);
                     break;
 
+                case "4":
+                    Console.Write("ID korisnika: ");
+                    int uid = int.Parse(Console.ReadLine());
+                    var rec = recService.GetRecommendations(uid);
+
+                    Console.WriteLine("\n--- Preporučene knjige ---");
+                    foreach (var b in rec)
+                        Console.WriteLine($"{b.Title} - {b.Author}");
+                    break;
+
                 default:
                     Console.WriteLine("Pogrešan izbor.");
                     break;
@@ -47,6 +77,7 @@ class Program
         }
     }
 
+    // --- USER MENU ---
     static void UserMenu(UserService service, UserRepository repo)
     {
         while (true)
@@ -88,8 +119,9 @@ class Program
 
                     case "3":
                         Console.Write("ID korisnika: ");
-                        var id = int.Parse(Console.ReadLine());
+                        int id = int.Parse(Console.ReadLine());
                         var user = repo.GetById(id);
+
                         if (user == null)
                         {
                             Console.WriteLine("Korisnik nije pronađen.");
@@ -103,7 +135,7 @@ class Program
                         break;
 
                     case "4":
-                        Console.Write("ID korisnika za brisanje: ");
+                        Console.Write("ID korisnika: ");
                         service.ObrisiKorisnika(int.Parse(Console.ReadLine()));
                         Console.WriteLine("Korisnik obrisan!");
                         break;
@@ -111,11 +143,12 @@ class Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Greška: {ex.Message}");
+                Console.WriteLine("Greška: " + ex.Message);
             }
         }
     }
 
+    // --- BOOK MENU ---
     static void BookMenu(LibraryInventory inventory)
     {
         while (true)
@@ -150,7 +183,6 @@ class Program
                 case "2":
                     Console.Write("ID knjige: ");
                     int updateId = int.Parse(Console.ReadLine());
-
                     Console.Write("Novi naslov: ");
                     string newTitle = Console.ReadLine();
                     Console.Write("Novi autor: ");
@@ -165,34 +197,32 @@ class Program
                     break;
 
                 case "3":
-                    Console.Write("ID knjige za brisanje: ");
+                    Console.Write("ID: ");
                     int deleteId = int.Parse(Console.ReadLine());
 
                     if (inventory.DeleteBook(deleteId))
-                        Console.WriteLine("Obrisano!");
+                        Console.WriteLine("Knjiga obrisana!");
                     else
-                        Console.WriteLine("Knjiga nije pronađena.");
+                        Console.WriteLine("Greška – knjiga ne postoji.");
                     break;
 
                 case "4":
-                    Console.Write("Unesi pojam za pretragu: ");
-                    string query = Console.ReadLine();
-
-                    var results = inventory.Search(query);
-                    results.ForEach(b => Console.WriteLine(b));
+                    Console.Write("Pretraga: ");
+                    var q = Console.ReadLine();
+                    inventory.Search(q).ForEach(Console.WriteLine);
                     break;
 
                 case "5":
-                    inventory.GetAllBooks().ForEach(b => Console.WriteLine(b));
+                    inventory.GetAllBooks().ForEach(Console.WriteLine);
                     break;
 
                 case "6":
                     Console.Write("ID knjige: ");
-                    int availId = int.Parse(Console.ReadLine());
+                    int id = int.Parse(Console.ReadLine());
                     Console.Write("Dostupna (1) / Nedostupna (0): ");
                     bool available = Console.ReadLine() == "1";
 
-                    if (inventory.SetAvailability(availId, available))
+                    if (inventory.SetAvailability(id, available))
                         Console.WriteLine("Status promijenjen!");
                     else
                         Console.WriteLine("Knjiga nije pronađena.");
@@ -201,6 +231,7 @@ class Program
         }
     }
 
+    // --- BORROW MENU ---
     static void BorrowMenu(BorrowService service)
     {
         while (true)
@@ -223,18 +254,15 @@ class Program
                     case "1":
                         Console.Write("ID korisnika: ");
                         int uid = int.Parse(Console.ReadLine());
-
                         Console.Write("ID knjige: ");
                         int bid = int.Parse(Console.ReadLine());
-
                         service.Posudi(uid, bid);
-                        Console.WriteLine("Knjiga uspješno posuđena!");
+                        Console.WriteLine("Knjiga posuđena!");
                         break;
 
                     case "2":
                         Console.Write("ID posudbe: ");
                         int pid = int.Parse(Console.ReadLine());
-
                         service.Vrati(pid);
                         Console.WriteLine("Knjiga vraćena!");
                         break;
@@ -250,7 +278,7 @@ class Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Greška: {ex.Message}");
+                Console.WriteLine("Greška: " + ex.Message);
             }
         }
     }
