@@ -18,10 +18,11 @@ namespace SmartLibrary.Tests
                 new object[] { "Iva", "Ivić", "iva@example.com" }
             };
 
-        [TestMethod]
+        [DataTestMethod]
         [DynamicData(nameof(UserData))]
         public void Registracija_DataDriven(string ime, string prezime, string email)
         {
+            // Repo se resetuje SVAKI PUT unutar metode
             var repo = new UserRepository();
             var service = new UserService(repo);
 
