@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "QXRV/laTCms=",
+  "success": true,
+  "projectFilePath": "/Users/macbook/Desktop/Testiranje-Softvera/Zadaća 1/SmartLibrary/SmartLibrary.csproj",
+  "expectedPackageFiles": [
+    "/Users/macbook/.nuget/packages/microsoft.netcore.app.ref/9.0.11/microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
+    "/Users/macbook/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.11/microsoft.aspnetcore.app.ref.9.0.11.nupkg.sha512",
+    "/Users/macbook/.nuget/packages/microsoft.netcore.app.host.osx-x64/9.0.11/microsoft.netcore.app.host.osx-x64.9.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}
