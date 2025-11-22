@@ -136,9 +136,9 @@ namespace SmartLibrary.Tests
             library.AddBook("C# Basics");
             library.ReserveBook("C# Basics", "Kemal");
 
-            var ex = Assert.That.Throws<InvalidOperationException>(() =>
-                library.BorrowBook("Amra", "C# Basics")
-            );
+           var ex = Assert.ThrowsException<InvalidOperationException>(() =>
+    library.BorrowBook("Amra", "C# Basics")
+);
 
             Assert.AreEqual("Book is reserved by another user.", ex.Message);
         }
