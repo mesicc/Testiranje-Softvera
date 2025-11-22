@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wrjScm5hFh8=",
+  "dgSpecHash": "+poiARNuGpI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Documents\\GitHub\\Testiranje-Softvera\\Zadaća 2\\SmartLibrary\\SmartLibrary.csproj",
+  "projectFilePath": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.11\\microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.11\\microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.11\\microsoft.aspnetcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.11\\microsoft.netcore.app.host.win-x64.9.0.11.nupkg.sha512"
+    "/home/mux/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
   ],
   "logs": []
 }

@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "/home/mux/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\GitHub\\Testiranje-Softvera\\Zadaća 2\\SmartLibrary\\SmartLibrary.csproj",
+      "projectUniqueName": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
       "projectName": "SmartLibrary",
-      "projectPath": "C:\\Users\\Administrator\\Documents\\GitHub\\Testiranje-Softvera\\Zadaća 2\\SmartLibrary\\SmartLibrary.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Documents\\GitHub\\Testiranje-Softvera\\Zadaća 2\\SmartLibrary\\obj\\",
+      "projectPath": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
+      "packagesPath": "/home/mux/.nuget/packages/",
+      "outputPath": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/mux/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -63,19 +63,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.11, 9.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[9.0.11, 9.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[9.0.11, 9.0.11]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[9.0.11, 9.0.11]"
+            "version": "[9.0.9, 9.0.9]"
           }
         ],
         "frameworkReferences": {
@@ -83,7 +71,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,13 +13,15 @@ class Program
         var userService = new UserService(userRepo);
         var borrowRepo = new BorrowRepository();
         var borrowService = new BorrowService(borrowRepo, inventory, userRepo);
-
+        var reminderService = new ReminderService(borrowRepo, userRepo, inventory);
+        
         while (true)
         {
             Console.WriteLine("\n=== SMART LIBRARY SISTEM ===");
             Console.WriteLine("1. Upravljanje korisnicima");
             Console.WriteLine("2. Inventar knjiga");
             Console.WriteLine("3. Sistem posudbe");
+            Console.WriteLine("4. Podsjetnici na rok");
             Console.WriteLine("0. Izlaz");
             Console.Write("Izbor: ");
 
@@ -38,6 +40,10 @@ class Program
 
                 case "3":
                     BorrowMenu(borrowService);
+                    break;
+
+                case "4":
+                    reminderService.PosaljiPodsjetnike();
                     break;
 
                 default:
