@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/Users/macbook/.nuget/packages/": {}
+    "/home/mux/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/macbook/Desktop/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
+      "projectUniqueName": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
       "projectName": "SmartLibrary",
-      "projectPath": "/Users/macbook/Desktop/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
-      "packagesPath": "/Users/macbook/.nuget/packages/",
-      "outputPath": "/Users/macbook/Desktop/Testiranje-Softvera/Zadaća 2/SmartLibrary/obj/",
+      "projectPath": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/SmartLibrary.csproj",
+      "packagesPath": "/home/mux/.nuget/packages/",
+      "outputPath": "/run/media/mux/930GB/Projekti/MuxBH28/Testiranje-Softvera/Zadaća 2/SmartLibrary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/macbook/.nuget/NuGet/NuGet.Config"
+        "/home/mux/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -63,15 +63,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.11, 9.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.osx-x64",
-            "version": "[9.0.11, 9.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[9.0.11, 9.0.11]"
+            "version": "[9.0.9, 9.0.9]"
           }
         ],
         "frameworkReferences": {
@@ -79,7 +71,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
